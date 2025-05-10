@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@fontsource/gilda-display": "^5.2.5",
     "astro": "^5.6.1",
     "sass": "^1.86.3"
   },
