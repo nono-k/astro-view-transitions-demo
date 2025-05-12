@@ -13,5 +13,5 @@ export const siteConfig: SiteConfig = {
 export const headerLink: HeaderLink[] = [
   { name: 'Home', url: '/' },
   { name: 'About', url: '/about' },
-  { name: 'Contact', url: '/contact' },
+  { name: 'Member', url: '/member' },
 ];
