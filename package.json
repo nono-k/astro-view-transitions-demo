@@ -11,6 +11,7 @@
   "dependencies": {
     "@fontsource/gilda-display": "^5.2.5",
     "astro": "^5.6.1",
+    "gsap": "^3.13.0",
     "sass": "^1.86.3",
     "three": "^0.176.0"
   },
