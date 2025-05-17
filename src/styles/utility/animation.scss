@@ -1,0 +1,112 @@
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slide-from-left {
+  from {
+    transform: translateX(-40px);
+  }
+}
+
+@keyframes slide-from-right {
+  from {
+    transform: translateX(40px);
+  }
+}
+
+@keyframes slide-from-top {
+  from {
+    transform: translateY(-40px);
+  }
+}
+
+@keyframes slide-from-bottom {
+  from {
+    transform: translateY(40px);
+  }
+}
+
+@keyframes slide-to-left {
+  to {
+    transform: translateX(-40px);
+  }
+}
+
+@keyframes slide-to-right {
+  to {
+    transform: translateX(40px);
+  }
+}
+
+@keyframes slide-to-top {
+  to {
+    transform: translateY(-40px);
+  }
+}
+
+@keyframes slide-to-bottom {
+  to {
+    transform: translateY(40px);
+  }
+}
+
+::view-transition-old(slide-left) {
+  animation:
+    0.09s cubic-bezier(0.4, 0, 1, 1) both fade-out,
+    0.3s cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+}
+
+::view-transition-new(slide-left) {
+  animation:
+    0.21s cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
+    0.3s cubic-bezier(0.4, 0, 0.2, 1) both slide-from-left;
+}
+
+::view-transition-old(slide-right) {
+  animation:
+    0.09s cubic-bezier(0.4, 0, 1, 1) both fade-out,
+    0.3s cubic-bezier(0.4, 0, 0.2, 1) both slide-to-right;
+}
+
+::view-transition-new(slide-right) {
+  animation:
+    0.21s cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
+    0.3s cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
+}
+
+::view-transition-old(fade-up) {
+  animation:
+    0.09s cubic-bezier(0.4, 0, 1, 1) both fade-out,
+    0.3s cubic-bezier(0.4, 0, 0.2, 1) both slide-to-bottom;
+}
+
+::view-transition-new(fade-up) {
+  animation:
+    0.21s cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
+    0.3s cubic-bezier(0.4, 0, 0.2, 1) both slide-from-bottom;
+}
+
+::view-transition-old(fade-down) {
+  animation:
+    0.09s cubic-bezier(0.4, 0, 1, 1) both fade-out,
+    0.3s cubic-bezier(0.4, 0, 0.2, 1) both slide-to-top;
+}
+
+::view-transition-new(fade-down) {
+  animation:
+    0.21s cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
+    0.3s cubic-bezier(0.4, 0, 0.2, 1) both slide-from-top;
+}
+
+::view-transition-old(webgl),
+::view-transition-new(webgl) {
+  animation: none;
+}
