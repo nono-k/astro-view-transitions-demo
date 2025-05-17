@@ -7,7 +7,8 @@ const { siteUrl } = siteConfig;
 
 // https://astro.build/config
 export default defineConfig({
-  site: siteUrl,
+  site: 'https://nono-k.github.io',
+  base: 'astro-view-transitions-demo',
   vite: {
     css: {
       preprocessorOptions: {
