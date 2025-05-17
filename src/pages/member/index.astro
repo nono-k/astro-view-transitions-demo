@@ -1,0 +1,148 @@
+---
+import { Image } from 'astro:assets';
+import { memberData } from '@/data/member-data';
+import Layout from '@/layouts/Layout.astro';
+
+const pageTitle = 'Member';
+const description = 'Memberページの説明文です。';
+---
+
+<Layout
+  pageTitle={pageTitle}
+  description={description}>
+  <h1 class="title" transition:name="slide-left">Member</h1>
+  <div class="container">
+    <div class="tab__wrap">
+      <button class="tab active" id="gridBtn">Grid</button>
+      <button class="tab" id="listBtn">List</button>
+    </div>
+    <div class="grid" id="tabContent">
+      {memberData.map(member => (
+        <a href=`member/${member.id}` class="member__card" id={member.id}>
+          <div
+            class="member__img"
+            transition:name=`member-${member.id}`
+          >
+            <Image
+              src={member.image}
+              alt={member.name}
+              width={200}
+              height={200}
+            />
+          </div>
+          <span class="member__name">{member.name}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</Layout>
+
+<style lang="scss">
+  .title {
+    grid-column: 1 / 6;
+    grid-row: 2 / 3;
+    font-size: 4rem;
+    margin-top: 1rem;
+    pointer-events: none;
+  }
+  .container {
+    grid-column: 1 / 8;
+    grid-row: 2 / 3;
+    margin-top: 8rem;
+    position: relative;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    position: relative;
+    &.list {
+      grid-template-columns: 1fr;
+      row-gap: 1rem;
+      .member__img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200px;
+        z-index: 100;
+        opacity: 0;
+        pointer-events: none;
+        // transition-property: opacity, translate;
+        // transition-duration: 0.4s;
+        // transition-timing-function: ease-in-out;
+        transition: none;
+      }
+      .member__name {
+        display: block;
+      }
+    }
+  }
+  .tab {
+    cursor: pointer;
+    &.active {
+      opacity: 0.3;
+      text-decoration: line-through;
+    }
+    &__wrap {
+      display: flex;
+      gap: 1rem;
+      justify-self: end;
+    }
+  }
+  .member {
+    &__card {
+      position: relative;
+    }
+    &__img {
+      transition-property: opacity, translate;
+      transition-duration: 0.3s;
+      transition-timing-function: ease-in-out;
+    }
+    &__name {
+      display: none;
+      font-size: 1.5rem;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const gridBtn = document.getElementById('gridBtn');
+    const listBtn = document.getElementById('listBtn');
+    const tabContent = document.getElementById('tabContent');
+
+    gridBtn?.addEventListener('click', () => {
+      if (tabContent?.classList.contains('list')) {
+        tabContent.classList.remove('list');
+        listBtn?.classList.remove('active');
+      }
+    });
+
+    listBtn?.addEventListener('click', () => {
+      gridBtn?.classList.remove('active');
+      listBtn?.classList.add('active');
+      tabContent?.classList.add('list');
+    });
+
+    const cards = document.querySelectorAll('.member__card');
+
+    cards.forEach(card => {
+      const imgWrap = card.querySelector('.member__img') as HTMLElement;
+      const imgHeight = imgWrap.getBoundingClientRect().height;
+      card.addEventListener('mousemove', (e) => {
+        if (!tabContent?.classList.contains('list')) return;
+        const mouseEvent = e as MouseEvent;
+        if (imgWrap) {
+          imgWrap.style.opacity = '1';
+          const x = mouseEvent.offsetX + 80;
+          const y = mouseEvent.offsetY - imgHeight / 2;
+          imgWrap.style.transform = `translate(${x}px, ${y}px)`;
+        }
+      });
+
+      card.addEventListener('mouseleave', () => {
+        if (!tabContent?.classList.contains('list')) return;
+        imgWrap.style.opacity = '0';
+      });
+    })
+  })
+</script>

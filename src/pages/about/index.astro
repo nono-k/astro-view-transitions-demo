@@ -3,14 +3,29 @@ import Layout from '@/layouts/Layout.astro';
 
 const pageTitle = 'About';
 const description = 'Aboutページの説明文です。';
-const pageOgp = '/images/ogp/about/ogp.png';
 ---
 
 <Layout
   pageTitle={pageTitle}
-  description={description}
-  pageOgp={pageOgp}>
+  description={description}>
 
-  <h1>Aboutページです。</h1>
-
+  <h1 class="title" transition:name="slide-right">About</h1>
+  <p class="desc" transition:name="fade-down">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto alias facilis assumenda laudantium consequuntur esse itaque aut dolor est quaerat? Similique labore natus neque libero vero consectetur magni ipsum fuga.Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto alias facilis assumenda laudantium consequuntur esse itaque aut dolor est quaerat? Similique labore natus neque libero vero consectetur magni ipsum fuga.</p>
 </Layout>
+
+<style lang="scss">
+  .title {
+    grid-column: 1 / -1;
+    grid-row: 3 / 4;
+    font-size: 4rem;
+    margin-top: 1rem;
+    align-self: end;
+    justify-self: end;
+  }
+  .desc {
+    grid-column: 7 / 12;
+    grid-row: 2 / 4;
+    margin-top: 2rem;
+    margin-inline: 2rem;
+  }
+</style>

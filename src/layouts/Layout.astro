@@ -1,8 +1,8 @@
 ---
-// Googlee Fontsなどはここで読み込む
-
+import '@fontsource/gilda-display';
 import '@/styles/styles.scss';
 
+import { ClientRouter } from 'astro:transitions';
 import Footer from '@/components/base/Footer.astro';
 import Header from '@/components/base/Header.astro';
 import Meta from '@/components/base/Meta.astro';
@@ -14,10 +14,30 @@ const props = Astro.props;
 <html lang="ja">
 	<head>
 		<Meta {...props} />
+    <ClientRouter fallback='swap' />
 	</head>
 	<body>
-    <Header />
-		<slot />
-    <Footer />
+    <div class="container">
+      <Header />
+      <slot />
+      <Footer />
+    </div>
+    <canvas class="webgl" transition:persist transition:name="webgl"></canvas>
 	</body>
 </html>
+
+<style lang="scss">
+  .container {
+    max-width: 1600px;
+    margin-inline: auto;
+    padding-inline: 2rem;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 2.5rem auto auto 1.53125rem;
+    gap: 1rem;
+    height: 100vh;
+    padding-block: 0.5rem;
+  }
+</style>
+
+<script src="../scripts/index.js"></script>

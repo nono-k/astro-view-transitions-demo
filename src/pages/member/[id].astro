@@ -1,0 +1,102 @@
+---
+import { Image } from 'astro:assets';
+import { memberData } from '@/data/member-data';
+import Layout from '@/layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  return memberData.map(member => ({
+    params: { id: member.id },
+  }))
+}
+
+const { id } = Astro.params;
+const member = memberData.find(member => member.id === id);
+const filterMember = memberData.filter(member => member.id !== id);
+
+if (!member) {
+  throw new Error(`Member not found: ${id}`);
+}
+
+const pageTitle = member.name;
+const description = `${member.name}のページです。`;
+---
+
+<Layout
+  pageTitle={pageTitle}
+  description={description}>
+  <h1 class="title" transition:name="slide-left">{member.name}</h1>
+  <div class="member">
+    <div class="member__img" transition:name=`member-${id}`>
+      <Image
+        src={member.image}
+        alt={member.name}
+        width={200}
+        height={200}
+      />
+    </div>
+    <p class="member__job">Job: {member.job}</p>
+    <p class="member__desc">{member.desc}</p>
+  </div>
+  <div class="other-member">
+    <h2 class="other-member__title">Other Member</h2>
+    <div class="other-member__grid">
+      {filterMember.map(member => (
+        <a href=`/member/${member.id}` class="other-member__card">
+          <div
+            class="other-member__img"
+            transition:name=`member-${member.id}`
+          >
+            <Image
+              src={member.image}
+              alt={member.name}
+              width={200}
+              height={200}
+              class="athor-member__image"
+            />
+          </div>
+        </a>
+      ))}
+    </div>
+    <a href="/member" class="other-member__back">Back</a>
+  </div>
+</Layout>
+
+<style lang="scss">
+  .title {
+    grid-column: 1 / 6;
+    grid-row: 2 / 3;
+    font-size: 4rem;
+    margin-top: 1rem;
+    pointer-events: none;
+  }
+  .member {
+    grid-column: 8 / 13;
+    grid-row: 2 / 4;
+    margin-bottom: 2rem;
+    &__job {
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+    }
+    &__desc {
+      font-size: 0.75rem;
+      margin-top: 1rem;
+    }
+  }
+  .other-member {
+    grid-column: 1 / 6;
+    grid-row: 3 / 4;
+    align-self: end;
+    &__head {
+      display: flex;
+      justify-content: space-between;
+    }
+    &__title {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    &__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>

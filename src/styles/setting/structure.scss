@@ -13,6 +13,13 @@ body {
   color: #000;
 }
 
+.webgl {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
 a {
   color: inherit;
   // text-decoration: none;
