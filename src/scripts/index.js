@@ -68,7 +68,7 @@ class App {
 
     let settings;
     switch (type) {
-      case '/about':
+      case '/about/':
         settings = {
           pos: [-2.8, 0.3, 2],
           rot: [0.1, 0.5, 0],
@@ -82,7 +82,7 @@ class App {
           uniforms: { color: 0.6, strength: 0.2 },
         };
         break;
-      case '':
+      case '/':
         settings = {
           pos: [2.8, -0.8, 1],
           rot: [-0.4, 0, -0.5],
