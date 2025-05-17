@@ -60,7 +60,8 @@ class App {
   }
 
   getSettings(path) {
-    let type = path;
+    const base = import.meta.env.BASE_URL;
+    let type = path.replace(base, '');
     if (type.startsWith('/member')) {
       type = '/member';
     }
@@ -81,7 +82,7 @@ class App {
           uniforms: { color: 0.6, strength: 0.2 },
         };
         break;
-      case '/':
+      case '':
         settings = {
           pos: [2.8, -0.8, 1],
           rot: [-0.4, 0, -0.5],

@@ -1,9 +1,10 @@
 ---
 import { headerLink } from "@/config";
+const base = import.meta.env.BASE_URL;
 ---
 
 <header class="header">
-  <a href="/" class="header__logo">Logo</a>
+  <a href={base} class="header__logo">Logo</a>
   <nav class="header__nav">
     <ul class="header__list">
       {headerLink.map(link => (

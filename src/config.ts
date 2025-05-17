@@ -1,4 +1,5 @@
 import type { HeaderLink, SiteConfig } from '@/types/config';
+const base = import.meta.env.BASE_URL;
 
 export const siteConfig: SiteConfig = {
   siteTitle: 'My Site',
@@ -11,7 +12,7 @@ export const siteConfig: SiteConfig = {
 };
 
 export const headerLink: HeaderLink[] = [
-  { name: 'Home', url: '/' },
-  { name: 'About', url: '/about' },
-  { name: 'Member', url: '/member' },
+  { name: 'Home', url: `${base}` },
+  { name: 'About', url: `${base}/about` },
+  { name: 'Member', url: `${base}/member` },
 ];
