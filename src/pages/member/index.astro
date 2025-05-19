@@ -18,7 +18,7 @@ const description = 'Memberページの説明文です。';
     </div>
     <div class="grid" id="tabContent">
       {memberData.map(member => (
-        <a href=`member/${member.id}` class="member__card" id={member.id}>
+        <a href=`./${member.id}` class="member__card" id={member.id}>
           <div
             class="member__img"
             transition:name=`member-${member.id}`

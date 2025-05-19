@@ -41,7 +41,7 @@ const description = `${member.name}のページです。`;
     <h2 class="other-member__title">Other Member</h2>
     <div class="other-member__grid">
       {filterMember.map(member => (
-        <a href=`/member/${member.id}` class="other-member__card">
+        <a href=`../${member.id}` class="other-member__card">
           <div
             class="other-member__img"
             transition:name=`member-${member.id}`
