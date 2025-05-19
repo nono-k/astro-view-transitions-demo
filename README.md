@@ -1,56 +1,19 @@
-# Astro Template
+# Astro View Transitions Demo
 
-```sh
-npm create astro@latest -- --template nono-k/astro-template
-```
+Astro の View Transitions を試してみた Demo
 
-## 🚀 Project Structure
+## 解説記事
 
-Inside of your Astro project, you'll see the following folders and files:
+![Image](https://github.com/user-attachments/assets/daecc77a-54c8-41b1-af74-1afc75f767ea)
 
-```text
-/
-├── public
-│   ├── favicon.svg
-│   └── ojp.jpg
-├── src
-│   ├── assets
-│   │   └── images
-│   ├── components
-│   │   ├── base
-│   │   └── ui
-│   ├── data
-│   ├── layouts
-│   │   └── Layout.astro
-│   ├── pages
-│   │   ├── about
-│   │   └── index.astro
-│   ├── scripts
-│   ├── styles
-│   │   ├── setting
-│   │   ├── ui
-│   │   ├── utility
-│   │   ├── mixin.scss
-│   │   └── styles.scss
-│   ├── types
-│   ├── utils
-│   └── config.ts
-├── astro.config.mjs
-├── biome.json
-├── package-lock.json
-├── package.json
-└── tsconfig.json
-```
+[Astro の View Transitions を試してみる(Three.js を使った例もあるよ)](https://hypb.dev/articles/astro-view-transitons/)
 
-## 🧞 Commands
+## Demo
 
-All commands are run from the root of the project, from a terminal:
+[https://nono-k.github.io/astro-view-transitions-demo/](https://nono-k.github.io/astro-view-transitions-demo/)
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Reference
+
+Three.js のシェーダーなどは Codrops の以下の記事を参考にしました。
+
+[Twisted Colorful Spheres with Three.js](https://tympanus.net/codrops/2021/01/26/twisted-colorful-spheres-with-three-js/)
